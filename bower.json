@@ -1,0 +1,11 @@
+{
+  "name": "angular.breadcrumbs",
+  "version": "0.1.0",
+  "main": [
+    "angular-breadcrumbs.js",
+        "angular-breadcrumbs.min.js"
+  ],
+  "ignore": [
+    "**/.*",
+  ]
+}
