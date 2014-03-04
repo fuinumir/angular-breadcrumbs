@@ -13,6 +13,7 @@ Include angular-breadcrumb.min.js in your app under the angular.min.js reference
 
 In order to use breadcrumbs you'll need to use configure your app to use Angular's routeProvider. You'll also need to 
 include the breadcrumbs service. You can then set a label for each route (breadcrumb) within the route options.
+Label can be a string or a function that return a string. 
 
 
 ```javascript
@@ -21,6 +22,7 @@ include the breadcrumbs service. You can then set a label for each route (breadc
       $routeProvider
         .when('/', { controller: 'HomeController', templateUrl: 'vw/home.html', label: 'Home' })
         .when('/stock/:stock', { controller: 'StockController', templateUrl: 'vw/stock.html', label: 'Stock' })
+        .when('/stock/:stock', { controller: 'StockController', templateUrl: 'vw/stock.html', label: function(el) { return el } })
         .when('/stock/:stock/detail', { controller: 'StockDetailController', templateUrl: 'vw/stock-detail.html', label: 'Stock Detail' })
         .otherwise({ redirectTo: '/' });
 ```
