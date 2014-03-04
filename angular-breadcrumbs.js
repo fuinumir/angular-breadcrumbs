@@ -27,8 +27,15 @@ angular.module('services.breadcrumbs').factory('breadcrumbs', ['$rootScope', '$l
         angular.forEach(pathElements, function(el) {
             path += path === '/' ? el : '/' + el;
             var route = getRoute(path);
-            if (routes[route] && routes[route].label) {
-                breadcrumbs.push({ label: routes[route].label, path: path });
+            var label;
+            if (typeof routes[route].label === 'function') {
+                label = routes[route].label(el);
+            } else {
+                label = routes[route].label;
+            }
+
+            if (routes[route] && label) {
+                breadcrumbs.push({ label: label, path: path });
             }
         });
     };
